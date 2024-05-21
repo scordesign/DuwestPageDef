@@ -65,6 +65,12 @@ function _map(d3,colombiaGeoJSON)
   function adressFn(d){
     return d && d.properties ? d.properties.DIRECCION : null;
   }
+  function celFn(d){
+    return d && d.properties ? d.properties.CELULAR : null;
+  }
+  function pbxFn(d){
+    return d && d.properties ? d.properties.PBX : null;
+  }
 
   // Get province name length
   function nameLength(d){
@@ -83,11 +89,15 @@ function _map(d3,colombiaGeoJSON)
     // Get information about the clicked department from its properties
    const departmentInfo = d.properties.NOMBRE_DPT;  // Assuming department information is in properties
    const direccionInfo = d.properties.DIRECCION;  // Assuming department information is in properties
-
+   const celInfo = d.properties.CELULAR;  // Assuming department information is in properties
+   const pbxInfo = d.properties.PBX; // Assuming department information is in properties
   // Update a DOM element (outside this function) to display the information
    document.getElementById('department-info').innerHTML = 
-   `<h2>Selected Department: ${departmentInfo}</h2><br/>
-    <h3>Address: ${direccionInfo}</h3>`;
+   `<h2>${departmentInfo}</h2><br/>
+    <h3> ${direccionInfo}</h3><br/>
+    <h3> DUWEST Colombia, S.A.S.</h3><br/>
+    <h3> ${celInfo}</h3><br/>
+    <h3> ${pbxInfo}</h3><br/>`;
 
 
     // Compute centroid of the selected path
