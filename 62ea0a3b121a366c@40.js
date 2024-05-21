@@ -62,6 +62,9 @@ function _map(d3,colombiaGeoJSON)
   function nameFn(d){
     return d && d.properties ? d.properties.NOMBRE_DPT : null;
   }
+  function adressFn(d){
+    return d && d.properties ? d.properties.DIRECCION : null;
+  }
 
   // Get province name length
   function nameLength(d){
@@ -78,13 +81,14 @@ function _map(d3,colombiaGeoJSON)
   function clicked(d) {
     var x, y, k;
     // Get information about the clicked department from its properties
-  const departmentInfo = d.properties;  // Assuming department information is in properties
+   const departmentInfo = d.properties.NOMBRE_DPT;  // Assuming department information is in properties
+   const direccionInfo = d.properties.DIRECCION;  // Assuming department information is in properties
 
   // Update a DOM element (outside this function) to display the information
-  document.getElementById('department-info').innerHTML = `
-    <h2>Selected Department: ${departmentInfo.NOMBRE_DPT}</h2>
-    `;
-}
+   document.getElementById('department-info').innerHTML = 
+   `<h2>Selected Department: ${departmentInfo}</h2><br/>
+    <h3>Address: ${direccionInfo}</h3>`;
+
 
     // Compute centroid of the selected path
     if (d && centered !== d) {
@@ -266,7 +270,7 @@ function _map(d3,colombiaGeoJSON)
 
 
 function _colombiaGeoJSON(d3){return(
-d3.json("https://gist.githubusercontent.com/john-guerra/43c7656821069d00dcbc/raw/3aadedf47badbdac823b00dbe259f6bc6d9e1899/colombia.geo.json")
+d3.json("https://raw.githubusercontent.com/scordesign/DuwestPageDef/main/colombia.geo.json")
 )}
 
 function _4(html){return(
@@ -300,6 +304,17 @@ text.big-text{
 
 .effect-layer text, text.dummy-text{
   font-size: 12px;
+}
+.department-info {
+  float: left;
+  position: fixed;
+  width: 33%;
+  background-color: rgba(0 , 0, 0, 0.6);
+  left: 54%;
+  top: 30%;
+  z-index: 999;
+  height: 38%;
+  color: white;
 }
 
 </style>`
