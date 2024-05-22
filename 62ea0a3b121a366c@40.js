@@ -96,8 +96,8 @@ function _map(d3,colombiaGeoJSON)
    `<h2>${departmentInfo}</h2><br/>
     <h3> ${direccionInfo}</h3><br/>
     <h3> DUWEST Colombia, S.A.S.</h3><br/>
-    <h3> ${celInfo}</h3><br/>
-    <h3> ${pbxInfo}</h3><br/>`;
+    <h3> Cel. ${celInfo}</h3><br/>
+    <h3> PBX: ${pbxInfo}</h3><br/>`;
 
 
     // Compute centroid of the selected path
@@ -323,7 +323,7 @@ text.big-text{
   left: 54%;
   top: 30%;
   z-index: 999;
-  height: 38%;
+  height: auto;
   color: white;
 }
 
